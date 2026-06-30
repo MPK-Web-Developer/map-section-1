@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Service Areas — Vendum IQF</title>
+
+    <!-- Optional premium type pairing. Remove this link and the font-family
+     references in style.css if you need a fully offline / no-CDN build —
+     the layout falls back to system fonts automatically. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <section class="service-map-section" id="service-areas">
+      <!-- decorative frost backdrop, purely visual -->
+      <div class="frost-backdrop" aria-hidden="true"></div>
+
+      <div class="service-map-wrapper">
+        <!-- ============ LEFT: COPY + SERVING LIST ============ -->
+        <div class="map-info">
+          <p class="map-eyebrow">Cold&nbsp;Chain&nbsp;Network</p>
+
+          <h2 class="map-title">
+            Service Areas
+            <span class="title-mark" aria-hidden="true">
+              <svg viewBox="0 0 44 20" xmlns="http://www.w3.org/2000/svg">
+                <rect
+                  x="6"
+                  y="2"
+                  width="16"
+                  height="16"
+                  rx="3"
+                  transform="rotate(45 14 10)"
+                  fill="var(--color-blue)"
+                />
+                <rect
+                  x="20"
+                  y="2"
+                  width="16"
+                  height="16"
+                  rx="3"
+                  transform="rotate(45 28 10)"
+                  fill="var(--color-magenta)"
+                />
+              </svg>
+            </span>
+          </h2>
+
+          <p class="map-subtitle">
+            Every order ships chilled straight from our Pochampalli IQF
+            facility, reaching kitchens, stores and homes across three states
+            without ever breaking the cold chain.
+          </p>
+
+          <!-- Quick stats strip — edit numbers/labels freely -->
+          <ul class="map-stats" aria-label="Network statistics">
+            <li>
+              <span class="stat-num">12</span
+              ><span class="stat-label">Cities&nbsp;served</span>
+            </li>
+            <li>
+              <span class="stat-num">3</span
+              ><span class="stat-label">States</span>
+            </li>
+            <li>
+              <span class="stat-num">1</span
+              ><span class="stat-label">IQF&nbsp;Hub</span>
+            </li>
+          </ul>
+
+          <!-- "Currently Serving" card -->
+          <div class="serving-card">
+            <p class="serving-card__header">Currently Serving</p>
+            <ul class="serving-list">
+              <li>
+                <span class="serving-mark" aria-hidden="true">
+                  <svg viewBox="0 0 30 14">
+                    <rect
+                      x="3"
+                      y="1"
+                      width="11"
+                      height="11"
+                      rx="2"
+                      transform="rotate(45 8.5 6.5)"
+                      fill="var(--color-blue)"
+                    />
+                    <rect
+                      x="14"
+                      y="1"
+                      width="11"
+                      height="11"
+                      rx="2"
+                      transform="rotate(45 19.5 6.5)"
+                      fill="var(--color-magenta)"
+                    />
+                  </svg>
+                </span>
+                Tamil&nbsp;Nadu
+              </li>
+              <li>
+                <span class="serving-mark" aria-hidden="true">
+                  <svg viewBox="0 0 30 14">
+                    <rect
+                      x="3"
+                      y="1"
+                      width="11"
+                      height="11"
+                      rx="2"
+                      transform="rotate(45 8.5 6.5)"
+                      fill="var(--color-blue)"
+                    />
+                    <rect
+                      x="14"
+                      y="1"
+                      width="11"
+                      height="11"
+                      rx="2"
+                      transform="rotate(45 19.5 6.5)"
+                      fill="var(--color-magenta)"
+                    />
+                  </svg>
+                </span>
+                Karnataka
+              </li>
+              <li>
+                <span class="serving-mark" aria-hidden="true">
+                  <svg viewBox="0 0 30 14">
+                    <rect
+                      x="3"
+                      y="1"
+                      width="11"
+                      height="11"
+                      rx="2"
+                      transform="rotate(45 8.5 6.5)"
+                      fill="var(--color-blue)"
+                    />
+                    <rect
+                      x="14"
+                      y="1"
+                      width="11"
+                      height="11"
+                      rx="2"
+                      transform="rotate(45 19.5 6.5)"
+                      fill="var(--color-magenta)"
+                    />
+                  </svg>
+                </span>
+                Andhra&nbsp;Pradesh
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- ============ RIGHT: MAP + ANIMATED PINS ============ -->
+        <div class="map-stage">
+          <div class="service-map-image-container" id="mapStage">
+            <img
+              src="./tn-service-area-map.png"
+              alt="Map of Tamil Nadu, Karnataka and Andhra Pradesh showing Vendum service locations"
+              class="service-map-image"
+              id="mapImage"
+            />
+
+            <!-- Cold-chain route lines, drawn + animated by script.js -->
+            <svg
+              class="route-lines"
+              id="routeLines"
+              viewBox="0 0 630 680"
+              preserveAspectRatio="none"
+              aria-hidden="true"
+            ></svg>
+
+            <!-- Pins are injected here by script.js from the LOCATIONS array -->
+            <div class="pin-layer" id="pinLayer"></div>
+          </div>
+
+          <div class="map-stage__footer">
+            <p class="map-hint">
+              <span class="hint-dot"></span>Tap a pin to view the location
+            </p>
+
+            <ul class="map-legend">
+              <li>
+                <span class="legend-swatch legend-swatch--service"></span
+                >Service Location
+              </li>
+              <li>
+                <span class="legend-swatch legend-swatch--hq"></span>Vendum IQF
+                Centre
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="script.js"></script>
+  </body>
+</html>
